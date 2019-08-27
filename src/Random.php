@@ -6,8 +6,8 @@
 * @site  dahoo.Fr
 * @gith https://github.com/Fabacks
 * @Copyright Licence CC-by-nc-sa 
-* @date : 10/07/2019
-* @version 1.5.0
+* @date : 27/08/2019
+* @version 1.6.0
 */ 
 namespace Fabacks;
 class Random {
@@ -85,10 +85,12 @@ class Random {
     /**
      * Generation d'un GUID au format FB6BD791-F5B1-4D2F-9E78-32A205A5703D
      *
-     * @return void
+     * @param boolean $upperCase
+     * @param boolean $withSeparator
+     * @return guid
      */
-    public static function generateGuid() {
-        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+    public static function generateGuid(bool $upperCase = true, bool $withSeparator = true) {
+        $guid = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
     
             // 32 bits for "time_low"
             mt_rand(0, 0xffff), mt_rand(0, 0xffff),
@@ -108,6 +110,9 @@ class Random {
             // 48 bits for "node"
             mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
         );
+
+        $guid = $withSeparator ? $guid : str_replace('-', '', $guid); 
+        return $upperCase ? strtoupper($guid) : $guid;
     }
     
     
