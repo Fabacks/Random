@@ -82,8 +82,7 @@ class Random {
     {
         if( empty($pLength) || $pLength < 2 ) return "";
 
-        $length = (int)($pLength / 2);
-        return bin2hex(random_bytes($length));
+        return self::generate($pLength, self::TYPE_ALPHANUMERIC, self::CASE_LOWER);
     }
 
 
