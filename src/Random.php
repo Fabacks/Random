@@ -1,37 +1,39 @@
 <?php
 /** 
 * Classe Random
-* @descrition Génération aléatoire de : character, alphanumeric, numbers, letters, specials
+* @description Génération aléatoire de : character, alphanumeric, numbers, letters, specials
 * @author Fabien COLAS Alias Fabacks
 * @site  dahoo.Fr
 * @gith https://github.com/Fabacks
 * @Copyright Licence CC-by-nc-sa 
-* @date : 07/08/2019
-* @version 1.7.0
+* @date : 12/01/2025
+* @version 2.0.0
 */ 
 namespace Fabacks;
-class Random {
+class Random 
+{
     const CASE_LOWER = 1;
     const CASE_UPPER = 2;
     const CASE_MIXTE = 3;
 
-    const TYPE_LETTER = 1; //Retourne une lettre de l'alphabet de A à Z
-    const TYPE_NUMBER = 2; //Retourne un chiffre de 0 à 9
-    const TYPE_ALPHANUMERIC = 3; //Retourne une lettre de l'alphabet de A à Z OU un chiffre de 0 à 9
-    const TYPE_SPECIAL = 4; //Retourne un caractere spéciaux
-    const TYPE_CHARACTER = 5; //Retourne une lettre, ou un nombre, ou caractere spéciaux
+    const TYPE_LETTER = 1;          // Retourne une lettre de l'alphabet de A à Z
+    const TYPE_NUMBER = 2;          // Retourne un chiffre de 0 à 9
+    const TYPE_ALPHANUMERIC = 3;    // Retourne une lettre de l'alphabet de A à Z OU un chiffre de 0 à 9
+    const TYPE_SPECIAL = 4;         // Retourne un caractère spéciaux
+    const TYPE_CHARACTER = 5;       // Retourne une lettre, ou un nombre, ou caractère spéciaux
     
     /**
-     * Generation d'une chaine de charactere aléatoire
+     * Génération d'une chaine de caractère aléatoire
      *
-     * @param int type de generation
-     * @param int longuer de la chaine
-     * @param int type 
+     * @param int $length Nombre de caractère
+     * @param int $type Type de génération
+     * @param int $case CamelCase du caractère 
      * @return void
      */
     public static function generate($length = 8, $type = self::TYPE_CHARACTER, $case = self::CASE_MIXTE) 
     {
-        if( empty($length) || empty($type) ) return "";
+        if( empty($length) || empty($type) )
+            return "";
 
         $startArrayRandom = 0;
         $endArrayRandom = 44;
@@ -73,23 +75,24 @@ class Random {
     }
 
     /**
-     * Generation d'un token
+     * Génération d'un token
      *
-     * @param int longuer de la chaine
+     * @param int longueur de la chaine
      * @return string
      */
     public static function generateToken($pLength = 8)
     {
-        if( empty($pLength) || $pLength < 2 ) return "";
+        if( empty($pLength) || $pLength < 2 ) 
+            return "";
 
         return self::generate($pLength, self::TYPE_ALPHANUMERIC, self::CASE_LOWER);
     }
 
 
     /**
-     * Generation d'un password
+     * Génération d'un password
      *
-     * @param int longuer de la chaine
+     * @param int longueur de la chaine
      * @return string
      */
     public static function generatePassword(int $pLength = 8)
@@ -98,13 +101,14 @@ class Random {
     }
 
     /**
-     * Generation d'un GUID au format FB6BD791-F5B1-4D2F-9E78-32A205A5703D
+     * Génération d'un GUID au format FB6BD791-F5B1-4D2F-9E78-32A205A5703D
      *
      * @param boolean $upperCase
      * @param boolean $withSeparator
      * @return guid
      */
-    public static function generateGuid(bool $upperCase = true, bool $withSeparator = true) {
+    public static function generateGuid(bool $upperCase = true, bool $withSeparator = true)
+    {
         $guid = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
     
             // 32 bits for "time_low"
@@ -132,9 +136,9 @@ class Random {
     
     
     /**
-     * Determine si l'on doit etre en minuscule, majuscule, ou mixte
+     * Détermine si l'on doit être en minuscule, majuscule, ou mixte
      *
-     * @param char $char
+     * @param string $char
      * @param int  $case
      * @return string
      */
@@ -155,22 +159,22 @@ class Random {
     }
 
     /**
-     * Retourne une valeur en fonction du nombre passer en parametre
+     * Retourne une valeur en fonction du nombre passer en paramètre
      *
      * @param int $pNum
-     * @return string charactere
+     * @return string Caractère dans la liste 
      */
     private static function assign_rand_value(int $pNum) 
     {
         // 26 lettre
         // 10 chiffre
-        // 10 caractere spéciaux
+        // 10 caractère spéciaux
         $list = array(
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
             '*', '/', '!', '@', '#', '~', '%', '&', '-', '_'
         );
-       
+
         return $list[$pNum];
     }
 }

@@ -1,6 +1,6 @@
 # Déscription
 
-Class PHP pour généré des GUID, des token, des passwords et des chaines (caractere, chiffre, caractere spaciaux)
+Class PHP pour généré des GUID, des token, des passwords et des chaines (caractère, chiffre, caractère spéciaux)
 
 ## Installation
 
@@ -23,16 +23,16 @@ Option possible pour la méthode generate
     generate(LONGEUR, CASE, TYPE)
 
 ### Constante CASE
-    CASE_LOWER : tous les caractere sont minuiscule;
-    CASE_UPPER : tous les careste  sont en majuscule;
-    CASE_MIXTE : mélange minuscule et majuscule;
+    CASE_LOWER : Tous les caractère sont minuscule;
+    CASE_UPPER : Tous les caractère  sont en majuscule;
+    CASE_MIXTE : Mélange minuscule et majuscule;
 
 ### Constante Type
     TYPE_LETTER : Retourne une lettre de l'alphabet de A à Z
     TYPE_NUMBER : Retourne un chiffre de 0 à 9
     TYPE_ALPHANUMERIC : Retourne une lettre de l'alphabet de A à Z OU un chiffre de 0 à 9
-    TYPE_SPECIAL : Retourne un caractere spéciaux
-    TYPE_CHARACTER : Retourne une lettre, ou un nombre, ou caractere spéciaux
+    TYPE_SPECIAL : Retourne un caractère spéciaux
+    TYPE_CHARACTER : Retourne une lettre, ou un nombre, ou caractère spéciaux
 
 
 ## License
